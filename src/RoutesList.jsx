@@ -17,7 +17,7 @@ import userContext from "./userContext";
 * PARENT -> RoutesList -> {CHILDREN}
 */
 
-function RoutesList ({login, signUp, update, webSocket}) {
+function RoutesList ({login, signUp, update}) {
   const { user } = useContext(userContext);
 
 
@@ -29,7 +29,7 @@ function RoutesList ({login, signUp, update, webSocket}) {
       {user &&
       <>
       <Route path="/profile" element={<ProfileForm update={update} />} />
-      <Route path="/matches" element={<Matches webSocket={webSocket}/>} />
+      <Route path="/matches" element={<Matches />} />
       <Route path="/swipe" element={<Swipe />} />
       <Route path="/messages/:id" element={<Messages />} />
       </>

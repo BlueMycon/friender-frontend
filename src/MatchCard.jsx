@@ -14,7 +14,7 @@ import Messages from "./Messages";
 
 function MatchCard({
   match: { id, email, firstName, lastName, hobbies, interests, profile_img_url },
-}, webSocket) {
+}) {
   console.log("props", firstName, lastName, interests, profile_img_url);
   return (
     // <Link className="text-decoration-none"to={`/messages/:${id}}`}>
@@ -57,12 +57,12 @@ function MatchCard({
         </h2>
         <div
           id="collapseOne"
-          class="accordion-collapse collapse show"
+          className="accordion-collapse collapse show"
           aria-labelledby="headingOne"
           data-bs-parent="#accordionExample"
         >
-          <div class="accordion-body">
-            <Messages webSocket={webSocket} message_to_email={email}/>
+          <div className="accordion-body">
+            <Messages toEmail={email}/>
           </div>
         </div>
       </div>

@@ -32,11 +32,11 @@ function App() {
   const [user, setUser] = useState(null);
   console.log('user in App', user)
 
-  const webSocket = useWebSocket(WS_URL, {
-    onOpen: () => {
-      console.log('WebSocket connection established.');
-    }
-  });
+  // const webSocket = useWebSocket(WS_URL, {
+  //   onOpen: () => {
+  //     console.log('WebSocket connection established.');
+  //   }
+  // });
 
 
 
@@ -94,7 +94,7 @@ function App() {
       <userContext.Provider value={{ user }}>
         <BrowserRouter>
           <NavBar logout={logout} />
-          <RoutesList login={login} signUp={signUp} update={update} webSocket={webSocket} />
+          <RoutesList login={login} signUp={signUp} update={update} />
         </BrowserRouter>
       </userContext.Provider>
     </div>
