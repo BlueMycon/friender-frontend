@@ -14,7 +14,7 @@ import Messages from "./Messages";
 
 function MatchCard({
   match: { id, email, firstName, lastName, hobbies, interests, profile_img_url },
-}, web) {
+}, webSocket) {
   console.log("props", firstName, lastName, interests, profile_img_url);
   return (
     // <Link className="text-decoration-none"to={`/messages/:${id}}`}>

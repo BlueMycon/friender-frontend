@@ -12,7 +12,7 @@ const Messages = ({ webSocket }) => {
 
   useEffect(() => {
     if (webSocket) {
-      webSocket.onmessage = (event) => {
+      webSocket.onMessage = (event) => {
         const messageData = JSON.parse(event.data);
         setMessages((prevMessages) => [...prevMessages, messageData]);
       };
