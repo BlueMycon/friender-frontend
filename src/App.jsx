@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Navigate } from "react-router-dom";
+import useWebSocket from 'react-use-websocket';
 import RoutesList from "./RoutesList";
 import NavBar from "./NavBar";
 import FrienderApi from "./api";
@@ -8,6 +9,8 @@ import Homepage from "./Homepage";
 import jwt_decode from "jwt-decode";
 import userContext from "./userContext";
 import useLocalStorage from "./useLocalStorage";
+
+const WS_URL = 'ws://127.0.0.1:5001';
 
 /** App returns our BrowserRouter with the NavBar component and the RoutesList component
  *
@@ -28,6 +31,14 @@ function App() {
   console.log('token from app', token)
   const [user, setUser] = useState(null);
   console.log('user in App', user)
+
+  const webSocket = useWebSocket(WS_URL, {
+    onOpen: () => {
+      console.log('WebSocket connection established.');
+    }
+  });
+
+
 
   /**logs the current user out */
   function logout() {
@@ -83,7 +94,7 @@ function App() {
       <userContext.Provider value={{ user }}>
         <BrowserRouter>
           <NavBar logout={logout} />
-          <RoutesList login={login} signUp={signUp} update={update} />
+          <RoutesList login={login} signUp={signUp} update={update} webSocket={webSocket} />
         </BrowserRouter>
       </userContext.Provider>
     </div>

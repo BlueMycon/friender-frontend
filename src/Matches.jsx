@@ -12,7 +12,7 @@ import userContext from "./userContext";
  * PARENT -> Matches -> {CHILDREN}
  */
 
-function Matches() {
+function Matches({webSocket}) {
   const { user } = useContext(userContext);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +38,7 @@ function Matches() {
   //not 100% sure where these will live
   /** renderInfo receives nothing, returns instances of the CompanyCard component*/
   function renderMatchCards() {
-    return matches.map((match) => <MatchCard key={match.id} match={match} />);
+    return matches.map((match) => <MatchCard key={match.id} match={match} webSocket={webSocket} />);
   }
 
   return (

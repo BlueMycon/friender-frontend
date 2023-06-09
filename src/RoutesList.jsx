@@ -5,6 +5,7 @@ import AuthForm from './AuthForm';
 import ProfileForm from './ProfileForm';
 import Matches from './Matches';
 import Swipe from './Swipe';
+import Messages from './Messages'
 import userContext from "./userContext";
 
  /** DESCRIPTION
@@ -16,7 +17,7 @@ import userContext from "./userContext";
 * PARENT -> RoutesList -> {CHILDREN}
 */
 
-function RoutesList ({login, signUp, update}) {
+function RoutesList ({login, signUp, update, webSocket}) {
   const { user } = useContext(userContext);
 
 
@@ -28,8 +29,9 @@ function RoutesList ({login, signUp, update}) {
       {user &&
       <>
       <Route path="/profile" element={<ProfileForm update={update} />} />
-      <Route path="/matches" element={<Matches />} />
+      <Route path="/matches" element={<Matches webSocket={webSocket}/>} />
       <Route path="/swipe" element={<Swipe />} />
+      <Route path="/messages/:id" element={<Messages />} />
       </>
       }
       <Route path="/*" element={<Navigate to="/" />} />
