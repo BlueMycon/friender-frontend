@@ -8,7 +8,7 @@ const Messages = ({toEmail}) => {
   const [messageHistory, setMessageHistory] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
-  const { sendMessage, lastMessage, readyState } = useWebSocket(`ws://127.0.0.1:5001/user/${user.email}/chat/${toEmail}`);
+  const { sendMessage, lastMessage, readyState } = useWebSocket(`wss://127.0.0.1:5001/user/${user.email}/chat/${toEmail}`);
 
   useEffect(() => {
     if (lastMessage !== null) {
